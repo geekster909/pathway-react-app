@@ -4,5 +4,8 @@ import ReactDOM from 'react-dom';
 import Pathway from './components/pathway';
 // import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Pathway />, document.getElementById('root'));
+ReactDOM.render(
+	<Pathway />,
+	document.getElementById('root')
+);
 // registerServiceWorker();
