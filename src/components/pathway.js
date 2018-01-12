@@ -16,9 +16,7 @@ export default class Pathway extends Component {
 	}
 
 	pathSearch(term) {
-		this.setState({
-			term: term
-		});
+		this.setState({term});
 	}
 
 	render() {
@@ -26,12 +24,10 @@ export default class Pathway extends Component {
 		return (
 			<div>
 				<SearchBar 
-					onSearchTermChange={pathSearch}/>
-					
+					onSearchTermChange={pathSearch} />
 				<SearchResults 
-					paths={this.state.paths}/>
-
-				{this.state.term}
+					searchTerm={this.state.term}
+					paths={this.state.paths} />
 			</div>
 		);
 	}
