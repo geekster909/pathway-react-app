@@ -1,19 +1,28 @@
-const paths = {
-	path1: {
+const paths = [
+	{
 		name: 'path-1',
 		location: 'Costa Mesa',
-		skill: 'Easy'
+		skill: 'Easy',
+		image:'',
+		miles: '',
+		address: ''
 	},
-	path2: {
+	{
 		name: 'path-2',
 		location: 'Anaheim',
-		skill: 'Moderate'
+		skill: 'Moderate',
+		image:'',
+		miles: '',
+		address: ''
 	},
-	path3: {
+	{
 		name: 'path-3',
 		location: 'Newport Beach',
-		skill: 'Hard'
+		skill: 'Hard',
+		image:'',
+		miles: '',
+		address: ''
 	}
-}
+]
 
 export default paths;
