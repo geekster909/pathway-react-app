@@ -29,8 +29,12 @@ export default class search_results extends Component {
 	}
 
 	render() {
-		const found = this.props.paths.find(this.checkPath);
-		const results = found ? Object.keys(this.props.paths).map(this.renderPaths) : 'No Results Found';
+		const { paths } = this.props;
+		var results = "Loading..."
+		if (paths.length > 0) {
+			const found = paths.find(this.checkPath);
+			results = found ? Object.keys(this.props.paths).map(this.renderPaths) : 'No Results Found';
+		}
 		return (
 			<div>
 				<h1>Search Results:</h1>

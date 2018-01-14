@@ -1,18 +1,28 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import pathsList from '../paths-list';
+// import pathsList from '../paths-list';
 import SearchBar from './search_bar';
 import SearchResults from './search_results';
+import base from '../base';
 
 export default class Pathway extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			term: '',
-			paths: pathsList,
+			paths: {},
 		}
+	}
 
+	componentWillMount() {
+		this.ref = base.syncState('/', {
+				context: this,
+				state: 'paths'
+			});
+	}
+
+	componentWillUnmount() {
+		base.removeBinding(this.ref);
 	}
 
 	pathSearch(term) {
