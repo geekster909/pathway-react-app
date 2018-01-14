@@ -4,13 +4,11 @@ export default class search_results extends Component {
 	constructor(){
 		super();
 		this.renderPaths = this.renderPaths.bind(this);
-		this.findPaths = this.findPaths.bind(this);
+		this.checkPath = this.checkPath.bind(this);
 	}
 	renderPaths(key) {
 		const path = this.props.paths[key];
-		const pathLocation = path['location'];
-		const { searchTerm } = this.props;
-		if (pathLocation.toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ' ') {
+		if (this.checkPath(path)) {
 			return (
 				<div key={key}>
 					<p>
@@ -25,15 +23,13 @@ export default class search_results extends Component {
 		}
 	}
 
-	findPaths(path) {
-		const pathLocation = path['location'];
+	checkPath(path) {
 		const { searchTerm } = this.props;
-		return pathLocation.toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ' ';
+		return path['location'].toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ' ';
 	}
 
 	render() {
-
-		const found = this.props.paths.find(this.findPaths);
+		const found = this.props.paths.find(this.checkPath);
 		const results = found ? Object.keys(this.props.paths).map(this.renderPaths) : 'No Results Found';
 		return (
 			<div>
