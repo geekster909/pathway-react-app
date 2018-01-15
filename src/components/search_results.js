@@ -6,6 +6,7 @@ export default class search_results extends Component {
 		this.renderPaths = this.renderPaths.bind(this);
 		this.checkPath = this.checkPath.bind(this);
 	}
+	
 	renderPaths(key) {
 		const path = this.props.paths[key];
 		if (this.checkPath(path)) {

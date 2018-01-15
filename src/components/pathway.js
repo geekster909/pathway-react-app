@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from './home';
+import FeaturedPaths from './featured_paths';
 import NoMatch from './no_match';
 import base from '../base';
 
@@ -41,6 +42,7 @@ export default class Pathway extends Component {
 							<Route component={NoMatch}/>
 						</Switch>
 					</div>
+					<FeaturedPaths paths={this.state.paths} />
 				</div>
 			</Router>
 		);
