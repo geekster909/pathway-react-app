@@ -9,16 +9,12 @@ import base from '../base';
 export default class Pathway extends Component {
 	constructor() {
 		super();
+		this.separatePaths = this.separatePaths.bind(this);
+		this.featuredPaths = this.featuredPaths.bind(this);
 		this.state = {
 			paths: {},
-			separatePaths: {
-				easyPaths: [],
-				moderatePaths: [],
-				hardPaths: []
-			},
-			loadingPaths: 'true'
+			loadedPaths: false
 		}
-		this.separatePaths = this.separatePaths.bind(this);
 	}
 
 	componentWillMount() {
@@ -26,8 +22,7 @@ export default class Pathway extends Component {
 			context: this,
 			state: 'paths',
 			then(data) {
-				this.setState({loadingPaths: false});
-				Object.keys(this.state.paths).map(this.separatePaths);
+				this.setState({loadedPaths: true});
 			}
 		});
 	}
@@ -36,46 +31,74 @@ export default class Pathway extends Component {
 		base.removeBinding(this.ref);
 	}
 
-	separatePaths(key) {
-		const path = this.state.paths[key];
-		const { separatePaths } = this.state;
-		if (path['skill'] === "Easy") {
-			const easyPaths = separatePaths.easyPaths.concat([path]);
-			separatePaths['easyPaths'] = easyPaths;
-			this.setState({ separatePaths });
-		} 
-		else if (path['skill'] === "Moderate") {
-			const moderatePaths = separatePaths.moderatePaths.concat([path]);
-			separatePaths['moderatePaths'] = moderatePaths;
-			this.setState({ separatePaths });
-		} else if (path['skill'] === "Hard") {
-			const hardPaths = separatePaths.hardPaths.concat([path]);
-			separatePaths['hardPaths'] = hardPaths;
-			this.setState({ separatePaths });
+	separatePaths() {
+		let separatePaths = {
+			easyPaths: [],
+			moderatePaths: [],
+			hardPaths: []
 		}
+		Object.keys(this.state.paths).map((index) => {
+			const path = this.state.paths[index];
+			if (path['skill'] === "Easy") {
+				const easyPaths = separatePaths.easyPaths.concat([path]);
+				separatePaths['easyPaths'] = easyPaths;
+			} else if (path['skill'] === "Moderate") {
+				const moderatePaths = separatePaths.moderatePaths.concat([path]);
+				separatePaths['moderatePaths'] = moderatePaths;
+			} else if (path['skill'] === "Hard") {
+				const hardPaths = separatePaths.hardPaths.concat([path]);
+				separatePaths['hardPaths'] = hardPaths;
+			}
+		});
+		return separatePaths;
+	}
+
+	featuredPaths() {
+		const separatePaths = this.separatePaths();
+		const easyPaths = separatePaths.easyPaths;
+		const moderatePaths = separatePaths.moderatePaths;
+		const hardPaths = separatePaths.hardPaths;
+		const easyPath = easyPaths[Math.floor(Math.random()*easyPaths.length)];
+		const moderatePath = moderatePaths[Math.floor(Math.random()*moderatePaths.length)];
+		const hardPath = hardPaths[Math.floor(Math.random()*hardPaths.length)];
+
+		const featuredPaths = {
+			easyPath,
+			moderatePath,
+			hardPath
+		}
+		return featuredPaths;
 	}
 
 	render() {
-		return (
-			<Router>
-				<div>
-					<div className="header">
-						<ul>
-							<li><Link to="/">Home</Link></li>
-						</ul>
+		// console.log('First Render');
+		// if (this.state.loadedPaths) {
+		// 	console.log('Paths Loaded');
+			return (
+				<Router>
+					<div>
+						<div className="header">
+							<ul>
+								<li><Link to="/">Home</Link></li>
+							</ul>
+						</div>
+						<div className="main-content">
+							<Switch>
+								<Route 
+									path="/" 
+									exact 
+									render={()=><Home paths={this.state.paths}/>} />
+								<Route component={NoMatch}/>
+							</Switch>
+						</div>
+						<FeaturedPaths featuredPaths={this.featuredPaths()} loadedPaths={this.state.loadedPaths} />
 					</div>
-					<div className="main-content">
-						<Switch>
-							<Route 
-								path="/" 
-								exact 
-								render={()=><Home paths={this.state.paths}/>} />
-							<Route component={NoMatch}/>
-						</Switch>
-					</div>
-					<FeaturedPaths separatePaths={this.state.separatePaths} />
-				</div>
-			</Router>
-		);
+				</Router>
+			)
+		// } else {
+		// 	return (
+		// 		<div>Loading...</div>
+		// 	)
+		// }
 	}
 }
