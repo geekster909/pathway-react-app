@@ -7,19 +7,19 @@ export default class FeaturedPaths extends Component {
 	}
 
 	featuredPaths(key) {
-		const path = this.props.paths[key];
-			return (
-				<div key={key}>
-					
-				</div>
-			)
+		// const path = this.props.separatePaths[key];
+		return (
+			<div key={key}>
+				
+			</div>
+		)
 	}
 
 	render() {
 		return (
 			<div>
 				<h1>Featured:</h1>
-				{Object.keys(this.props.paths).map(this.featuredPaths)}
+				{Object.keys(this.props.separatePaths).map(this.featuredPaths)}
 			</div>
 		);
 	}
