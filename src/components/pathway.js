@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import '../scss/style.scss';
 import Home from './home';
 import FeaturedPaths from './featured_paths';
 import NoMatch from './no_match';
