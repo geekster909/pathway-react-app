@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class search_results extends Component {
 	constructor(){
@@ -14,11 +15,15 @@ export default class search_results extends Component {
 			return (
 				<div className="results--path" key={key}>
 					<div className="results--path__image">
-						<img src="http://dummyimage.com/168x280/4d494d/686a82.gif&text=168x280" alt="168x280" />
+						<Link to={`/path/${path['permalink']}`}>
+							<img src="http://dummyimage.com/168x280/4d494d/686a82.gif&text=168x280" alt="168x280" />
+						</Link>
 					</div>
 					<div className="results--path__copy">
 						<div className="results--path__name">
-							{path['name']}
+							<Link to={`/path/${path['permalink']}`}>
+								{path['name']}
+							</Link>
 						</div>
 						<div className="results--path__location">
 							{path['location']}

@@ -118,6 +118,9 @@
 }
 .results--path__name {
 	margin-bottom: 4px;
+	a {
+		color: inherit;
+	}
 }
 .results--path__location {
 	font-size: 14px;

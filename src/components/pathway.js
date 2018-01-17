@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import '../scss/style.scss';
 import Home from './home';
 import FeaturedPaths from './featured_paths';
+import PathDetailed from './path_detailed';
 import NoMatch from './no_match';
 import base from '../base';
 
@@ -92,6 +93,11 @@ export default class Pathway extends Component {
 									path="/" 
 									exact 
 									render={()=><Home paths={this.state.paths}/>} />
+								<Route
+									path="/path/:permalink"
+									props={this.state.match}
+									// component={PathDetailed}/>
+									render={(props)=><PathDetailed {...props} paths={this.state.paths}/>}/>
 								<Route component={NoMatch}/>
 							</Switch>
 						</div>
