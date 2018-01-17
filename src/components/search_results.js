@@ -37,9 +37,9 @@ export default class search_results extends Component {
 			results = found ? Object.keys(this.props.paths).map(this.renderPaths) : 'No Results Found';
 		}
 		return (
-			<div>
-				<h1>Search Results:</h1>
-				<div>{results}</div>
+			<div className="search-results--container">
+				<div className="search-results--title">Search Results:</div>
+				<div className="search-results">{results}</div>
 			</div>
 		);
 	}

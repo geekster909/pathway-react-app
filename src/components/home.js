@@ -34,7 +34,7 @@ export default class home extends Component {
 								onSearchTermChange={pathSearch} />
 						</div>
 						<div className="home--legend">
-							<span>Trail Level:</span>
+							<span className="legend--title">Trail Level:</span>
 							<span className="legend--easy">Easy</span>
 							<span className="legend--moderate">Moderate</span>
 							<span className="legend--hard">Hard</span>
