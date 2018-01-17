@@ -77,10 +77,16 @@ export default class Pathway extends Component {
 			return (
 				<Router>
 					<div>
-						<div className="header">
-							<ul>
-								<li><Link to="/">Home</Link></li>
-							</ul>
+						<div className="header--container">
+							<div className="container">
+								<div className="col-xs-offset-1 col-sm-10">
+									<div className="header--logo">
+										<Link to="/">
+											<img src="http://dummyimage.com/150x150/4d494d/686a82.gif&text=150x150" alt="150x150" />
+										</Link>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div className="main-content">
 							<Switch>
