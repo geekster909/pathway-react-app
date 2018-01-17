@@ -10,15 +10,21 @@ export default class search_results extends Component {
 	renderPaths(key) {
 		const path = this.props.paths[key];
 		if (this.checkPath(path)) {
+			const pathLevel = path['skill'].toLowerCase();
 			return (
-				<div key={key}>
-					<p>
-						{`Path Name: ${path['name']}`}
-						<br /> 
-						{`Location: ${path['location']}`}
-						<br /> 
-						{`Skill: ${path['skill']}`}
-					</p>
+				<div className="results--path" key={key}>
+					<div className="results--path__image">
+						<img src="http://dummyimage.com/168x280/4d494d/686a82.gif&text=168x280" alt="168x280" />
+					</div>
+					<div className="results--path__copy">
+						<div className="results--path__name">
+							{path['name']}
+						</div>
+						<div className="results--path__location">
+							{path['location']}
+						</div>
+						<div className={`results--path__level ${pathLevel}`}></div>
+					</div>
 				</div>
 			)
 		}
