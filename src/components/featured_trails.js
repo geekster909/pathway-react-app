@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class FeaturedTrails extends Component {
 	constructor(){
 		super();
-		this.featuredTrails = this.featuredTrails.bind(this);
+		this.renderFeaturedTrail = this.renderFeaturedTrail.bind(this);
 	}
 
-	featuredTrails() {
+	renderFeaturedTrail(key) {
+		const trail = this.props.featuredTrails[key];
+		const trailLevel = trail['skill'].toLowerCase();
+		const imageStyle = {
+			backgroundImage: 'url(' + trail['image'] + ')',
+		}
 		return (
-			<div>
-				<div className="featured--easy-trail">
-					{this.props.featuredTrails.easyTrail['name']}
+			<Link to={`/trail/${trail['permalink']}`} className="featured--trail" key={key}>
+				<div className="featured--trail__image" style={imageStyle}>
 				</div>
-				<div className="featured--moderate-trail">
-					{this.props.featuredTrails.moderateTrail['name']}
-				</div><div className="featured--hard-trail">
-					{this.props.featuredTrails.hardTrail['name']}
+				<div className="featured--trail__content">
+					<div className="featured--trail__name">
+						{trail['name']}
+					</div>
+					<div className="featured--trail__location">
+						{trail['location']}
+					</div>
+					<div className={`featured--trail__level ${trailLevel}`}></div>
 				</div>
-			</div>
+			</Link>
 		)
 	}
 
 	render() {
-		const featuredTrails = this.props.loadedTrails ? this.featuredTrails() : 'Loading...';
+		const featuredTrails = this.props.loadedTrails ? Object.keys(this.props.featuredTrails).map(this.renderFeaturedTrail) : 'Loading...';
 		return (
-			<div>
-				<h1>Featured:</h1>
-				{ featuredTrails }
+			<div className="featured--container">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-offset-2 col-lg-8">
+							<div className="featured--title">Featured Trails</div>
+							<div className="featured--trails">
+								{ featuredTrails }
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}

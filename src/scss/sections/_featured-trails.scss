@@ -1,0 +1,59 @@
+.featured--container {
+	background-color: #F8F8F8;
+	padding: 83px 0 79px;
+}
+.featured--title {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
+.featured--trails {
+	display: flex;
+	flex-wrap: wrap;
+}
+.featured--trail {
+	background-color: #fff;
+	flex: 1 1 calc(100%);
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
+	margin-bottom: 30px;
+	border-radius: 3px;
+	color: inherit;
+	@include media($tablet-up) {
+		margin-right: 6%;
+		flex: 0 1 calc(29.33%);
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
+	}
+	&:hover, &:focus {
+		color: inherit;
+	}
+}
+.featured--trail__image {
+	min-height: 188px;
+	line-height: 0;
+	background-position: center;
+	background-size: cover;
+}
+.featured--trail__content {
+	padding: 24px 20px;
+}
+.featured--trail__name {
+	margin-bottom: 12px;
+}
+.featured--trail__location {
+	font-size: 14px;
+	font-style: italic;
+	color: #A5A5A5;
+	margin-bottom: 21px;
+}
+.featured--trail__level {
+	&.easy {
+		@include indicator--level__easy;
+	}
+	&.moderate {
+		@include indicator--level__moderate;
+	}
+	&.hard {
+		@include indicator--level__hard;
+	}
+}

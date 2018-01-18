@@ -81,11 +81,13 @@
 	flex-wrap: wrap;
 }
 .results--trail {
+	background-color: #fff;
 	flex: 1 1 calc(100%);
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 	margin-bottom: 30px;
 	border-radius: 3px;
 	display: flex;
+	color: inherit;
 	> div {
 		flex: 1;
 	}
@@ -106,11 +108,17 @@
 			margin-right: 0;
 		}
 	}
+	&:hover, &:focus {
+		color: inherit;
+	}
 }
 .results--trail__image {
 	max-width: 84px;
 	display: inline-block;
 	line-height: 0;
+	min-height: 140px;
+	background-position: center;
+	background-size: cover;
 }
 .results--trail__copy {
 	padding: 27px 0 0 25px;

@@ -12,25 +12,23 @@ export default class search_results extends Component {
 		const trail = this.props.trails[key];
 		if (this.checkTrail(trail)) {
 			const trailLevel = trail['skill'].toLowerCase();
+			const imageStyle = {
+				backgroundImage: 'url(' + trail['image'] + ')',
+			}
 			return (
-				<div className="results--trail" key={key}>
-					<div className="results--trail__image">
-						<Link to={`/trail/${trail['permalink']}`}>
-							<img src="http://dummyimage.com/168x280/4d494d/686a82.gif&text=168x280" alt="168x280" />
-						</Link>
+				<Link to={`/trail/${trail['permalink']}`} className="results--trail" key={key}>
+					<div className="results--trail__image" style={imageStyle}>
 					</div>
 					<div className="results--trail__copy">
 						<div className="results--trail__name">
-							<Link to={`/trail/${trail['permalink']}`}>
-								{trail['name']}
-							</Link>
+							{trail['name']}
 						</div>
 						<div className="results--trail__location">
 							{trail['location']}
 						</div>
 						<div className={`results--trail__level ${trailLevel}`}></div>
 					</div>
-				</div>
+				</Link>
 			)
 		}
 	}
@@ -42,7 +40,8 @@ export default class search_results extends Component {
 
 	render() {
 		const { trails } = this.props;
-		var results = "Loading..."
+		let results = ''
+		// if (trails.length > 0 && this.props.searchTerm !== '') {
 		if (trails.length > 0) {
 			const found = trails.find(this.checkTrail);
 			results = found ? Object.keys(this.props.trails).map(this.renderTrails) : 'No Results Found';
