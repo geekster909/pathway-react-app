@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
-import Pathway from './components/pathway';
+import Trailway from './components/trailway';
 // import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-	<Pathway />,
+	<Trailway />,
 	document.getElementById('root')
 );
 // registerServiceWorker();

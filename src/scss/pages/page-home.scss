@@ -80,7 +80,7 @@
 	display: flex;
 	flex-wrap: wrap;
 }
-.results--path {
+.results--trail {
 	flex: 1 1 calc(100%);
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.15);
 	margin-bottom: 30px;
@@ -107,28 +107,28 @@
 		}
 	}
 }
-.results--path__image {
+.results--trail__image {
 	max-width: 84px;
 	display: inline-block;
 	line-height: 0;
 }
-.results--path__copy {
+.results--trail__copy {
 	padding: 27px 0 0 25px;
 	display: inline-block;
 }
-.results--path__name {
+.results--trail__name {
 	margin-bottom: 4px;
 	a {
 		color: inherit;
 	}
 }
-.results--path__location {
+.results--trail__location {
 	font-size: 14px;
 	font-style: italic;
 	color: #A5A5A5;
 	margin-bottom: 13px;
 }
-.results--path__level {
+.results--trail__level {
 	&.easy {
 		@include indicator--level__easy;
 	}

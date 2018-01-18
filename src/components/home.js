@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-// import pathsList from '../paths-list';
 import SearchBar from './search_bar';
 import SearchResults from './search_results';
 
@@ -9,16 +8,15 @@ export default class home extends Component {
 		super(props);
 		this.state = {
 			term: '',
-			// paths: {},
 		}
 	}
 
-	pathSearch(term) {
+	trailSearch(term) {
 		this.setState({term});
 	}
 	
 	render() {
-		const pathSearch = _.debounce((term) => { this.pathSearch(term) }, 500 );
+		const trailSearch = _.debounce((term) => { this.trailSearch(term) }, 500 );
 		return (
 			<div className="home--container">
 				<div className="container">
@@ -32,7 +30,7 @@ export default class home extends Component {
 							</div>
 							<div className="home--search">
 								<SearchBar 
-									onSearchTermChange={pathSearch} />
+									onSearchTermChange={trailSearch} />
 							</div>
 							<div className="home--legend">
 								<span className="legend--title">Trail Level:</span>
@@ -43,7 +41,7 @@ export default class home extends Component {
 							<div className="home--search-results">
 								<SearchResults 
 									searchTerm={this.state.term}
-									paths={this.props.paths} />
+									trails={this.props.trails} />
 							</div>
 						</div>
 					</div>
