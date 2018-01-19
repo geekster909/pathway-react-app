@@ -1,0 +1,28 @@
+.trail--detailed {
+	margin-bottom: 72px;
+}
+.trail--detailed__image {
+	img {
+		width: 100%;
+	}
+}
+.trail--details {
+	margin: 45px 0 28px;
+}
+.trail--details__title h1 {
+	font-family: $playfair;
+	font-size: 50px;
+	margin-bottom: 15px;
+	font-weight: normal;
+}
+.trail--trail__level {
+	&.easy {
+		@include indicator--level__easy;
+	}
+	&.moderate {
+		@include indicator--level__moderate;
+	}
+	&.hard {
+		@include indicator--level__hard;
+	}
+}
