@@ -15,14 +15,26 @@
 	margin-bottom: 15px;
 	font-weight: normal;
 }
-.trail--trail__level {
+.trail--details__level {
 	&.easy {
-		@include indicator--level__easy;
+		&:before {
+			content: '';
+			display: inline-block;
+			@include indicator--level__easy;
+		}
 	}
 	&.moderate {
-		@include indicator--level__moderate;
+		&:before {
+			content: '';
+			display: inline-block;
+			@include indicator--level__moderate;
+		}
 	}
 	&.hard {
-		@include indicator--level__hard;
+		&:before {
+			content: '';
+			display: inline-block;
+			@include indicator--level__hard;
+		}
 	}
 }

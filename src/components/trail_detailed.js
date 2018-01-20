@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 export default class trail_detailed extends Component {
 	constructor() {
 		super();
 		this.getTrailDetails = this.getTrailDetails.bind(this);
 	}
-
+	componentWillMount() {
+		window.scrollTo(0, 0)
+	}
+	componentDidUpdate () {
+		window.scrollTo(0, 0)
+	}
 	getTrailDetails(key) {
 		let trailDetails = [];
 		Object.keys(this.props.trails).map((index) => {
@@ -19,8 +25,12 @@ export default class trail_detailed extends Component {
 	}
 	render() {
 		const trailDetails = this.getTrailDetails();
-		// const trailLevel = trailDetails['skill'].toLowerCase();
-		const trailLevel = trailDetails['skill'];
+		let trailLevel = '';
+		if (trailDetails['skill']) {
+			trailLevel = trailDetails['skill'].toLowerCase();
+		} else {
+			trailLevel = trailDetails['skill'];
+		}
 		console.log(trailDetails);
 		return (
 			<div className="trail--detailed">
@@ -35,11 +45,22 @@ export default class trail_detailed extends Component {
 									<h1>{trailDetails['name']}</h1>
 								</div>
 								<div className={`trail--details__level ${trailLevel}`}>
-									{trailLevel}
+									{trailDetails['skill']}
 								</div>
 								<div className="trail--details__miles">
 									Miles: {trailDetails['miles']}
 								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="back-to-search">
+					<div className="container">
+						<div className="row">
+							<div className="col-lg-offset-2 col-lg-8">
+								<Link to={`/`}>
+									Back to Search
+								</Link>
 							</div>
 						</div>
 					</div>
