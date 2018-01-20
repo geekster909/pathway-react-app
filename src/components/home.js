@@ -11,6 +11,10 @@ export default class home extends Component {
 		}
 	}
 
+	componentWillMount() {
+		window.scrollTo(0, 0)
+	}
+
 	trailSearch(term) {
 		this.setState({term});
 	}

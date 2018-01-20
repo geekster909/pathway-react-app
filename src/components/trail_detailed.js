@@ -25,13 +25,9 @@ export default class trail_detailed extends Component {
 	}
 	render() {
 		const trailDetails = this.getTrailDetails();
-		let trailLevel = '';
-		if (trailDetails['skill']) {
-			trailLevel = trailDetails['skill'].toLowerCase();
-		} else {
-			trailLevel = trailDetails['skill'];
-		}
-		console.log(trailDetails);
+		// console.log(trailDetails);
+		const trailLevel = trailDetails['skill'] ? trailDetails['skill'].toLowerCase() : trailDetails['skill'];
+		const replaceTrailName = trailDetails['location'] ? trailDetails['location'].replace(" ", "+") : trailDetails['location'];
 		return (
 			<div className="trail--detailed">
 				<div className="trail--detailed__image">
@@ -47,6 +43,12 @@ export default class trail_detailed extends Component {
 								<div className={`trail--details__level ${trailLevel}`}>
 									{trailDetails['skill']}
 								</div>
+								<div className="trail--details__location">
+									Location: {trailDetails['location']}
+									<Link to={`https://www.google.com/maps/place/${replaceTrailName}`} target="_blank">
+										<i class="fa fa-map-marker" aria-hidden="true"></i>
+									</Link>
+								</div>
 								<div className="trail--details__miles">
 									Miles: {trailDetails['miles']}
 								</div>
@@ -54,12 +56,14 @@ export default class trail_detailed extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="back-to-search">
+				<div className="back-to-search--container">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-offset-2 col-lg-8">
 								<Link to={`/`}>
-									Back to Search
+									<div className="back-to-search">
+										Back to Search
+									</div>
 								</Link>
 							</div>
 						</div>

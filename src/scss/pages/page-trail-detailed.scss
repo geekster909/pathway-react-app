@@ -1,5 +1,5 @@
 .trail--detailed {
-	margin-bottom: 72px;
+	margin-bottom: 100px;
 }
 .trail--detailed__image {
 	img {
@@ -7,7 +7,7 @@
 	}
 }
 .trail--details {
-	margin: 45px 0 28px;
+	margin: 45px 0 50px;
 }
 .trail--details__title h1 {
 	font-family: $playfair;
@@ -16,6 +16,9 @@
 	font-weight: normal;
 }
 .trail--details__level {
+	margin-bottom: 30px;
+	font-size: 12px;
+	color: #A5A5A5;
 	&.easy {
 		&:before {
 			content: '';
@@ -36,5 +39,43 @@
 			display: inline-block;
 			@include indicator--level__hard;
 		}
+	}
+}
+.trail--details__location {
+	margin-bottom: 20px;
+	display: inline-block;
+	// &:after {
+	// 	content: '\f041';
+	// 	font-family: FontAwesome;
+	// 	color: #A5A5A5;
+	// 	margin-left: 4px;
+	// }
+	.fa {
+		color: #A5A5A5;
+		margin-left: 4px;
+	}
+}
+.trail--details__miles {
+	margin-bottom: 20px;
+}
+.back-to-search {
+	display: flex;
+	align-items: center;
+	height: 39px;
+	width: 155px;
+	border: 1px solid #707070;
+	border-radius: 8px;
+	font-size: 14px;
+	padding-right: 10px;
+	color: #707070;
+	&:before {
+		content: '';
+		display: inline-block;
+		width: 37px;
+		height: 37px;
+		background-color: #E0E0E0;
+		border-radius: 8px 0 0 8px;
+		border-right: 1px solid #707070;
+		margin-right: 10.5px;
 	}
 }
