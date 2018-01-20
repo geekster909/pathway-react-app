@@ -31,7 +31,7 @@ export default class trail_detailed extends Component {
 		return (
 			<div className="trail--detailed">
 				<div className="trail--detailed__image">
-					<img src={trailDetails['image']} alt=""/>
+					<img src={`http://trailway.justin-bond.com/trail-images/${trailDetails['permalink']}.jpg`} alt=""/>
 				</div>
 				<div className="trail--details">
 					<div className="container">
@@ -46,7 +46,7 @@ export default class trail_detailed extends Component {
 								<div className="trail--details__location">
 									Location: {trailDetails['location']}
 									<Link to={`https://www.google.com/maps/place/${replaceTrailName}`} target="_blank">
-										<i class="fa fa-map-marker" aria-hidden="true"></i>
+										<i className="fa fa-map-marker" aria-hidden="true"></i>
 									</Link>
 								</div>
 								<div className="trail--details__miles">

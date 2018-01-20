@@ -13,7 +13,7 @@ export default class search_results extends Component {
 		if (this.checkTrail(trail)) {
 			const trailLevel = trail['skill'].toLowerCase();
 			const imageStyle = {
-				backgroundImage: 'url(' + trail['image'] + ')',
+				backgroundImage: 'url(http://trailway.justin-bond.com/trail-images/' + trail['permalink'] + '.jpg)',
 			}
 			return (
 				<Link to={`/trail/${trail['permalink']}`} className="results--trail" key={key}>
