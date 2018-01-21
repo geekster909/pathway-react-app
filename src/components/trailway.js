@@ -14,7 +14,8 @@ export default class Trailway extends Component {
 		this.featuredTrails = this.featuredTrails.bind(this);
 		this.state = {
 			trails: {},
-			loadedTrails: false
+			loadedTrails: false,
+			featuredTrails: {}
 		}
 	}
 
@@ -23,7 +24,10 @@ export default class Trailway extends Component {
 			context: this,
 			state: 'trails',
 			then(data) {
-				this.setState({loadedTrails: true});
+				this.setState({
+					loadedTrails: true,
+					featuredTrails: this.featuredTrails()
+				});
 			}
 		});
 	}
@@ -92,14 +96,23 @@ export default class Trailway extends Component {
 								<Route 
 									path="/" 
 									exact 
-									render={()=><Home trails={this.state.trails}/>} />
+									render={()=>(
+										<div className="home-page">
+											<Home trails={this.state.trails}/>
+											<FeaturedTrails featuredTrails={this.state.featuredTrails} loadedTrails={this.state.loadedTrails} />
+										</div>
+										)} />
 								<Route
 									path="/trail/:permalink"
-									render={(props)=><TrailDetailed {...props} trails={this.state.trails}/>}/>
+									render={(props)=>(
+										<div className="trail-detailed-page">
+											<TrailDetailed {...props} trails={this.state.trails}/>
+											<FeaturedTrails featuredTrails={this.state.featuredTrails} loadedTrails={this.state.loadedTrails} />
+										</div>
+										)}/>
 								<Route component={NoMatch}/>
 							</Switch>
 						</div>
-						<FeaturedTrails featuredTrails={this.featuredTrails()} loadedTrails={this.state.loadedTrails} />
 					</div>
 				</Router>
 			)
