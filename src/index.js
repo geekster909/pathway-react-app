@@ -6,7 +6,7 @@ import './scss/style.scss';
 import Admin from './components/trailway_admin';
 import Trailway from './components/trailway';
 // import registerServiceWorker from './registerServiceWorker';
-class App extends Component {
+class TrailwayApp extends Component {
 	render() {
 		return (
 			<Router>
@@ -22,7 +22,7 @@ class App extends Component {
 	}
 }
 ReactDOM.render(
-	<App/>,
+	<TrailwayApp/>,
 	document.getElementById('root')
 );
 // registerServiceWorker();
