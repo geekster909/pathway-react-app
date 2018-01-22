@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import '../scss/style.scss';
 import Home from './home';
 import FeaturedTrails from './featured_trails';
 import TrailDetailed from './trail_detailed';
