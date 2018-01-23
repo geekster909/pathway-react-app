@@ -1,0 +1,39 @@
+.admin--home {
+	margin: 50px 0;
+}
+.admin--trails {
+	display: grid;
+	grid-gap: 25px;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+.trail-edit {
+	border: 2px solid #000;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	input[type="text"], select {
+		width: 50%;
+		padding: 10px;
+		line-height: 1;
+		font-size: 1.2rem;
+		border: 0;
+		border-bottom: 1px solid #000;
+		border-right: 1px solid #000;
+		appearance: none;
+		border-radius: 0;
+		background: #fff;
+		margin: 0;
+		&:focus {
+			background: #fef2de
+		}
+		&:hover {
+			border-color: inherit;
+		}
+		&[disabled] {
+			cursor: no-drop;
+		}
+	}
+	input[name="location"], input[name="address"] {
+		width: 100%;
+	}
+}

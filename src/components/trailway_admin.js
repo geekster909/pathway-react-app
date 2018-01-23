@@ -43,15 +43,22 @@ export default class TrailwayAdmin extends Component {
 		const trail = this.state.trails[key];
 		return (
 			<div className="trail-edit"  key={key}>
-				<input type="text" name="name" value={trail.name} placeholder="Trail Name" onChange={(e) => this.handleChange(e, key)} />
-				<input type="text" name="location" value={trail.location} placeholder="Trail Location" onChange={(e) => this.handleChange(e, key)} />
-				<input type="text" name="address" value={trail.address} placeholder="Trail Address" onChange={(e) => this.handleChange(e, key)} />
-				<select type="text" name="skill" value={trail.skill} placeholder="Trail Skill" onChange={(e) => this.handleChange(e, key)}>
+				<input type="text" name="name" value={trail.name} placeholder="Trail Name" 
+					onChange={(e) => this.handleChange(e, key)} />
+				<input type="text" name="permalink" value={trail.permalink} placeholder="Trail Permalink" 
+					onChange={(e) => this.handleChange(e, key)} disabled/>
+				<input type="text" name="location" value={trail.location} placeholder="Trail Location" 
+					onChange={(e) => this.handleChange(e, key)} />
+				<input type="text" name="address" value={trail.address} placeholder="Trail Address" 
+					onChange={(e) => this.handleChange(e, key)} />
+				<select type="text" name="skill" value={trail.skill} placeholder="Trail Skill" 
+					onChange={(e) => this.handleChange(e, key)}>
 					<option value="Easy">Easy</option>
 					<option value="Moderate">Moderate</option>
 					<option value="Hard">Hard</option>
 				</select>
-				<input type="text" name="miles" value={trail.miles} placeholder="Trail Miles" onChange={(e) => this.handleChange(e, key)} />
+				<input type="text" name="miles" value={trail.miles} placeholder="Trail Miles" 
+					onChange={(e) => this.handleChange(e, key)} />
 			</div>
 		)
 	}
@@ -59,9 +66,16 @@ export default class TrailwayAdmin extends Component {
 	render() {
 		console.log('admin loaded');
 		return (
-			<div>
-				This is the admin page.<br />
-				{Object.keys(this.state.trails).map(this.renderTrails)}
+			<div className="admin--home">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-12">
+							<div className="admin--trails">
+								{Object.keys(this.state.trails).map(this.renderTrails)}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
