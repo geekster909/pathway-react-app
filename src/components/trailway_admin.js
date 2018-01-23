@@ -4,6 +4,7 @@ import base from '../base';
 export default class TrailwayAdmin extends Component {
 	constructor() {
 		super();
+		this.createPermalink = this.createPermalink.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.updateTrail = this.updateTrail.bind(this);
 		this.renderTrails = this.renderTrails.bind(this);
@@ -24,13 +25,31 @@ export default class TrailwayAdmin extends Component {
 		base.removeBinding(this.ref);
 	}
 
+	createPermalink(value) {
+		let permalink = value.toLowerCase();
+		permalink = permalink.replace(/\s+/g, '-');
+
+		return permalink;
+	}
+
 	handleChange(e, key) {
 		const trail = this.state.trails[key];
-		const updatedTrail = {
-			...trail,
-			[e.target.name]: e.target.value
+		const permalink = 'permalink';
+		if (e.target.name === 'name') {
+			const updatedTrail = {
+				...trail,
+				[e.target.name]: e.target.value,
+				[permalink]: this.createPermalink(e.target.value),
+			}
+			this.updateTrail(key, updatedTrail);
+		} else {
+			const updatedTrail = {
+				...trail,
+				[e.target.name]: e.target.value
+			}
+			this.updateTrail(key, updatedTrail);
 		}
-		this.updateTrail(key, updatedTrail);
+		
 	}
 
 	updateTrail(key, updatedTrail) {
