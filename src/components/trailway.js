@@ -18,11 +18,16 @@ export default class Trailway extends Component {
 	}
 
 	componentWillMount() {
-		this.ref = base.syncState('/trails', {
+		// this.ref = base.syncState('/trails', {
+		this.ref = base.fetch('/trails', {
 			context: this,
-			state: 'trails',
+			// state: 'trails',
+			asArray: true,
 			then(data) {
+				console.log(data);
+				this.setState({trails: data});
 				this.setState({loadedTrails: true});
+				
 			}
 		});
 	}
