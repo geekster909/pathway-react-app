@@ -37,4 +37,22 @@
 	input[name="location"], input[name="address"] {
 		width: 100%;
 	}
+	input[name="permalink"],
+	input[name="location"],
+	input[name="address"],
+	input[name="miles"], {
+		border-right: none;
+	}
+	button {
+		width: 100%;
+		border-radius: 0;
+		background-color: #000;
+		color: #fff;
+		padding: 0.25em; 
+		font-size: 14px;
+		&:hover {
+			background-color: #fff;
+			color: #000;
+		}
+	}
 }

@@ -56,7 +56,7 @@ export default class TrailwayAdmin extends Component {
 		const trails = {...this.state.trails};
 		// add in our new fish
 		const timestamp = Date.now();
-		trails[`${timestamp}`] = trail;
+		trails[this.createPermalink(trail.name)] = trail;
 		this.setState({ trails });
 	}
 
@@ -113,7 +113,8 @@ export default class TrailwayAdmin extends Component {
 							<div className="admin--trails">
 								{Object.keys(this.state.trails).map(this.renderTrails)}
 								<form ref={(input) => this.trailForm = input} className="trail-edit" onSubmit={(e) => this.createTrail(e)}>
-									<input ref={(input) => {this.name = input}} type="text" placeholder="Trail Name" />
+									<input ref={(input) => {this.name = input}} type="text" name="name" placeholder="Trail Name" />
+									<input ref={(input) => {this.permalink = input}} type="text" name="permalink" placeholder="Trail Permalink"  disabled/>
 									<input ref={(input) => {this.location = input}} type="text" name="location" placeholder="Trail Location" />
 									<input ref={(input) => {this.address = input}} type="text" name="address"  placeholder="Trail Address" />
 									<select ref={(input) => {this.skill = input}}>
@@ -122,7 +123,7 @@ export default class TrailwayAdmin extends Component {
 										<option value="Hard">Hard</option>
 									</select>
 									<input ref={(input) => {this.miles = input}} type="text" name="miles"  placeholder="Trail Miles" />
-									<button type="submit">+ Add Item</button>
+									<button type="submit">+ Add Trail</button>
 								</form>
 							</div>
 						</div>

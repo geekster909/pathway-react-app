@@ -35,7 +35,11 @@ export default class search_results extends Component {
 
 	checkTrail(trail) {
 		const { searchTerm } = this.props;
-		return trail['location'].toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ' ';
+		if (trail['location'] && trail['skill']) {
+			return trail['location'].toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ' ';
+		} else {
+			return false;
+		}
 	}
 
 	render() {
