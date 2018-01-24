@@ -79,6 +79,12 @@ export default class TrailwayAdmin extends Component {
 		this.setState({ trails });
 	}
 
+	removeTrail(key) {
+		const trails = {...this.state.trails};
+		trails[key] = null;
+		this.setState({ trails });
+	}
+
 	renderTrails(key) {
 		const trail = this.state.trails[key];
 		return (
@@ -99,6 +105,7 @@ export default class TrailwayAdmin extends Component {
 				</select>
 				<input type="text" name="miles" value={trail.miles} placeholder="Trail Miles" 
 					onChange={(e) => this.handleChange(e, key)} />
+				<button onClick={() => this.removeTrail(key)}>- Remove Trail</button>
 			</div>
 		)
 	}
