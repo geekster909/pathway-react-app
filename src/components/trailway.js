@@ -9,7 +9,6 @@ import base from '../base';
 export default class Trailway extends Component {
 	constructor() {
 		super();
-		this.separateTrails = this.separateTrails.bind(this);
 		this.featuredTrails = this.featuredTrails.bind(this);
 		this.state = {
 			trails: {},

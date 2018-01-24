@@ -4,11 +4,7 @@ import base from '../base';
 export default class TrailwayAdmin extends Component {
 	constructor() {
 		super();
-		this.createPermalink = this.createPermalink.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.updateTrail = this.updateTrail.bind(this);
 		this.renderTrails = this.renderTrails.bind(this);
-
 		this.state = {
 			trails: {},
 		}
@@ -52,15 +48,7 @@ export default class TrailwayAdmin extends Component {
 		
 	}
 
-	addTrail(trail) {
-		const trails = {...this.state.trails};
-		// add in our new fish
-		const timestamp = Date.now();
-		trails[this.createPermalink(trail.name)] = trail;
-		this.setState({ trails });
-	}
-
-	createTrail(event) {
+	addTrail(event) {
 		event.preventDefault();
 		const trail = {
 			name: this.name.value,
@@ -69,7 +57,9 @@ export default class TrailwayAdmin extends Component {
 			skill: this.skill.value,
 			miles: this.miles.value,
 		}
-		this.addTrail(trail);
+		const trails = {...this.state.trails};
+		trails[this.createPermalink(trail.name)] = trail;
+		this.setState({ trails });
 		this.trailForm.reset();
 	}
 
@@ -119,7 +109,7 @@ export default class TrailwayAdmin extends Component {
 						<div className="col-lg-12">
 							<div className="admin--trails">
 								{Object.keys(this.state.trails).map(this.renderTrails)}
-								<form ref={(input) => this.trailForm = input} className="trail-edit" onSubmit={(e) => this.createTrail(e)}>
+								<form ref={(input) => this.trailForm = input} className="trail-edit" onSubmit={(e) => this.addTrail(e)}>
 									<input ref={(input) => {this.name = input}} type="text" name="name" placeholder="Trail Name" />
 									<input ref={(input) => {this.permalink = input}} type="text" name="permalink" placeholder="Trail Permalink"  disabled/>
 									<input ref={(input) => {this.location = input}} type="text" name="location" placeholder="Trail Location" />
