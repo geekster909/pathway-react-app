@@ -1,12 +1,29 @@
 .admin--home {
 	margin: 50px 0;
+	.login {
+		text-align: center;
+	}
+	button {
+		border-radius: 0;
+		background-color: #000;
+		color: #fff;
+		font-size: 14px;
+		&:hover {
+			background-color: #fff;
+			color: #000;
+			border: 1px solid #000;
+		}
+	}
+}
+.admin--header {
+	margin-bottom: 50px;
 }
 .admin--trails {
 	display: grid;
 	grid-gap: 25px;
 	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 }
-.trail-edit {
+.trail-box {
 	border: 2px solid #000;
 	overflow: hidden;
 	display: flex;
@@ -53,6 +70,7 @@
 		&:hover {
 			background-color: #fff;
 			color: #000;
+			border: none;
 		}
 	}
 }

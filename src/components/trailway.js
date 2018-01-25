@@ -4,7 +4,7 @@ import Home from './home';
 import FeaturedTrails from './featured_trails';
 import TrailDetailed from './trail_detailed';
 import NoMatch from './no_match';
-import base from '../base';
+import { base } from '../base';
 
 export default class Trailway extends Component {
 	constructor() {
