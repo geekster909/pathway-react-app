@@ -57,8 +57,11 @@
 	input[name="permalink"],
 	input[name="location"],
 	input[name="address"],
-	input[name="miles"], {
+	select[name="dogs"], {
 		border-right: none;
+	}
+	input[name="miles"] {
+		border-bottom: none;
 	}
 	button {
 		width: 100%;
@@ -67,10 +70,12 @@
 		color: #fff;
 		padding: 0.25em; 
 		font-size: 14px;
+		border-top: solid 1px #000;
 		&:hover {
 			background-color: #fff;
 			color: #000;
 			border: none;
+			border-top: solid 1px #000;
 		}
 	}
 }

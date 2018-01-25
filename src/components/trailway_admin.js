@@ -111,6 +111,7 @@ export default class TrailwayAdmin extends Component {
 			location: this.location.value,
 			address: this.address.value,
 			skill: this.skill.value,
+			dogs: this.dogs.value,
 			miles: this.miles.value,
 		}
 		const trails = {...this.state.trails};
@@ -148,6 +149,11 @@ export default class TrailwayAdmin extends Component {
 					<option value="Easy">Easy</option>
 					<option value="Moderate">Moderate</option>
 					<option value="Hard">Hard</option>
+				</select>
+				<select type="text" name="dogs" value={trail.dogs} placeholder="Dogs Allowed?" 
+					onChange={(e) => this.handleChange(e, key)}>
+					<option value="No">No</option>
+					<option value="Yes">Yes</option>
 				</select>
 				<input type="text" name="miles" value={trail.miles} placeholder="Trail Miles" 
 					onChange={(e) => this.handleChange(e, key)} />
@@ -199,10 +205,14 @@ export default class TrailwayAdmin extends Component {
 								<input ref={(input) => {this.permalink = input}} type="text" name="permalink" placeholder="Trail Permalink"  disabled/>
 								<input ref={(input) => {this.location = input}} type="text" name="location" placeholder="Trail Location" />
 								<input ref={(input) => {this.address = input}} type="text" name="address"  placeholder="Trail Address" />
-								<select ref={(input) => {this.skill = input}}>
+								<select ref={(input) => {this.skill = input}} name="skill">
 									<option value="Easy">Easy</option>
 									<option value="Moderate">Moderate</option>
 									<option value="Hard">Hard</option>
+								</select>
+								<select ref={(input) => {this.dogs = input}} name="dogs">
+									<option value="No">No</option>
+									<option value="Yes">Yes</option>
 								</select>
 								<input ref={(input) => {this.miles = input}} type="text" name="miles"  placeholder="Trail Miles" />
 								<button type="submit">+ Add Trail</button>
