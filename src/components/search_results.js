@@ -13,7 +13,7 @@ export default class search_results extends Component {
 		if (this.checkTrail(trail)) {
 			const trailLevel = trail['skill'].toLowerCase();
 			const imageStyle = {
-				backgroundImage: 'url(http://trailway.justin-bond.com/trail-images/' + trail['permalink'] + '.jpg)',
+				backgroundImage: 'url(http://trailway.justin-bond.com/trail-images/' + trail['permalink'] + '.png)',
 			}
 			return (
 				<Link to={`/trail/${trail['permalink']}`} className="results--trail" key={key}>
@@ -44,9 +44,9 @@ export default class search_results extends Component {
 
 	render() {
 		const { trails } = this.props;
-		let results = ''
-		// if (trails.length > 0 && this.props.searchTerm !== '') {
-		if (trails.length > 0) {
+		let results = '';
+		if (trails.length > 0 && this.props.searchTerm !== '') {
+		// if (trails.length > 0) {
 			const found = trails.find(this.checkTrail);
 			results = found ? Object.keys(this.props.trails).map(this.renderTrails) : 'No Results Found';
 		}

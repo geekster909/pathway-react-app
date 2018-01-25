@@ -31,7 +31,7 @@ export default class trail_detailed extends Component {
 		return (
 			<div className="trail--detailed">
 				<div className="trail--detailed__image">
-					<img src={`http://trailway.justin-bond.com/trail-images/${trailDetails['permalink']}.jpg`} alt=""/>
+					<img src={`http://trailway.justin-bond.com/trail-images/${trailDetails['permalink']}.png`} alt=""/>
 				</div>
 				<div className="trail--details">
 					<div className="container">
